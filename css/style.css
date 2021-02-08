@@ -1,0 +1,8 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+header, footer {
+    padding: 15px;
+}
