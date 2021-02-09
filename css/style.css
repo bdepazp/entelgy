@@ -1,8 +1,199 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
+*,
+:after,
+:before {
+    box-sizing: border-box;
 }
 
-header, footer {
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bbb;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(78, 78, 78, 0.05);
+}
+
+html,
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: url(https://gtms.co.uk/wp-content/uploads/2015/06/dotted-worldmap.png);
+    background-size: cover;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid #eee;
+    padding: 10px 25px;
+}
+
+header,
+.content {
+    padding: 25px;
+}
+
+header {
+    font-size: 1.5rem;
+    background: #190a47;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: "Raleway", sans-serif;
+    margin: 0;
+}
+
+header .search {
+    border: 0;
     padding: 15px;
+    border-radius: 1.5rem;
+    outline: none;
+    transition: all ease 1s;
+}
+
+header .search:focus {
+    width: 300px;
+}
+
+small {
+    font-size: 0.8em;
+    font-weight: 100;
+}
+
+.countries {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.popup-container {
+    display: none;
+}
+
+.popup-container::before {
+    content: "";
+    box-shadow: 0 0 0 10000px rgb(0 0 0 / 50%);
+    position: absolute;
+    z-index: 98;
+}
+
+.countries wc-country {
+    animation: animar ease 1s;
+}
+
+.popup {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    background: #fff;
+    border-radius: 1rem;
+    font-family: "Roboto", sans-serif;
+    z-index: 99;
+    animation: zoom ease 0.3s;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0.3) translate(-100%, 100%);
+    }
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+.popup h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.popup .title,
+.popup .content {
+    padding: 10px;
+}
+
+.popup .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 0;
+    font-size: 2rem;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+@keyframes animar {
+    0% {
+        transform: scale(0.3);
+        opacity: 0.5;
+    }
+    80% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 850px) {
+    .countries {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .countries {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    header .search {
+        margin-top: 0.2rem;
+        width: 100%;
+    }
+
+    header .search:focus {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .countries {
+        grid-template-columns: 100%;
+    }
 }
