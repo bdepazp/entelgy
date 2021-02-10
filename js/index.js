@@ -14,7 +14,7 @@ function get(search) {
 
         search = (search || '').toLowerCase();
         let countries = res
-            .filter(function (x) { return x.name.toLowerCase().indexOf(search) != -1 })
+            .filter(function (x) { return x.nativeName.toLowerCase().indexOf(search) != -1 })
             .slice(0, 12);
 
         if (countries.length) {
@@ -23,7 +23,7 @@ function get(search) {
                 item.value = data;
                 
                 //p.setAttribute('data', JSON.stringify(country));
-                item.setAttribute('name', data.name);
+                item.setAttribute('name', data.nativeName);
                 item.setAttribute('flag', data.flag);
                 item.setAttribute('capital', data.capital);
                 item.setAttribute('region', data.region);
